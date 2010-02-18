@@ -1,0 +1,8 @@
+Description:
+    Explain the generator
+
+Example:
+    ./script/generate jcarousel_fu Thing
+
+    This will create:
+        what/will/it/create
