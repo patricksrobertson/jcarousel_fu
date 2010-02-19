@@ -5,7 +5,14 @@ jCarousel_fu
 **Copyright**: 2010
 **License**: [MIT License](file:LICENSE)
 
-jCarousel_fu is a rails plugin that creates helper methods for using the jQuery jCarousel plugin.  I find that you end up repeating yourself far too often when creating the necessary html for making a slideshow so I wanted to streamline this.  This plugin is fully tested using [rspec](http://rspec.info) so you can run tests to verify it works.
+About jCarousel
+----------------
+[jCarousel](http://sorgalla.com/jcarousel/) is a plugin for jQuery that makes pretty slideshows.  It operates on working with specially named div and ul tags within html.
+
+About jCarousel_fu
+------------------
+
+jCarousel_fu is a rails plugin that creates helper methods for implementing jCarousel.  It also places 95% of the configuration of the jCarousel attributes into the rails view helper.  The normal use case will require 0 modification of javascript.  This plugin is fully tested using [rspec](http://rspec.info) so you can run tests to verify it works.
 
 Installation:
 -------------
@@ -95,5 +102,14 @@ This usage scrolls the image every 8 seconds, and doesn't wrap the collection in
 		</ul>
 	</div>
 
+To Do's
+-------
+
+* accept custom jCarousel name (for using more than 1 per page)
+* accept custom jCarousel skin
+* external controls
+* enable toggling of prev/next buttons
+* change the # of visible images
+* change the # of elements that the slideshow scrolls by
 
 Copyright (c) 2010 [Patrick Robertson](http://p-rob.me), released under the MIT license  
