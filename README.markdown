@@ -16,14 +16,16 @@ Installation:
 Usage:
 ------
 In your view you can use the helper method jcarousel_slideshow(options={}).  This creates the html necessary for a slideshow element.  It accepts the following parameters:
+
 * Hash of options.  The supported options as of now are:
 	:auto_scroll=> true or time in seconds to automatically scroll by
-	:images=> Array of images.  Will create html like this <li><img src="image_name" />
+	:images=> Array of images.  Will create html like this <li><img src="image_name" /></li>
 	:content=> Array of content.  If you want to pass in more than just image paths, use this option.  It takes precedence over the images option.
 
-Example:
+Examples:
 -------
 
+Base usage, non-auto scrolling collection of images.
 	# View
 	<% photos = ["image_1.jpg","image_2.jpg"] %>
 	<%= jcarousel_slideshow :images=>photos %>
@@ -35,7 +37,8 @@ Example:
 			<li><img src="/images/image_2.jpg"/></li>
 		</ul>
 	</div>
-	
+
+This usage scrolls the image every 3 seconds.	
 	# View
 	<% photos = ["image_1.jpg","image_2.jpg"] %>
 	<%= jcarousel_slideshow :images=>photos,:auto_scroll=>true %>
@@ -47,7 +50,8 @@ Example:
 			<li><img src="/images/image_2.jpg"/></li>
 		</ul>
 	</div>
-	
+
+This usage scrolls the images every 8 seconds.	
 	# View
 	<% photos = ["image_1.jpg","image_2.jpg"] %>
 	<%= jcarousel_slideshow :images=>photos,:auto_scroll=>"8" %>
@@ -59,7 +63,8 @@ Example:
 			<li><img src="/images/image_2.jpg"/></li>
 		</ul>
 	</div>
-	
+
+This usage scrolls the image every 8 seconds, and doesn't wrap the collection in image_tags.	
 	# View
 	<% photos = ["image_1.jpg","image_2.jpg"] %>
 	<%= jcarousel_slideshow :content=>photos,:auto_scroll=>"8" %>
