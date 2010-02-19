@@ -24,10 +24,27 @@ describe JcarouselFu, :type=> :helper do
   end
   
   
-  it "should auto increment when I say so" do
+  it "should auto increment at a default speed when I say so" do
     html = helper.jcarousel_slideshow(["images_1.jpg","images_2.jpg"],:auto_scroll=>true)
     html.should have_tag("div#jcarousel-slides.jcarousel-skin-tango") do
       with_tag("ul.auto-scroll")
+      with_tag("ul.jcarousel-slides") do
+        with_tag("li") do
+          with_tag("img[src=?]","/images/images_1.jpg")
+        end
+        with_tag("li") do
+          with_tag("img[src=?]","/images/images_2.jpg")
+        end
+      end
+    end
+  end
+  
+  it "should auto increment every 8 seconds when that is specified" do
+    html = helper.jcarousel_slideshow(["images_1.jpg","images_2.jpg"],
+                                      {:auto_scroll=>"8"})
+    html.should have_tag("div#jcarousel-slides.jcarousel-skin-tango") do
+      with_tag("ul.auto-scroll")
+      with_tag("ul[auto=?]","8")
       with_tag("ul.jcarousel-slides") do
         with_tag("li") do
           with_tag("img[src=?]","/images/images_1.jpg")
