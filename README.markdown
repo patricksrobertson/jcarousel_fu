@@ -15,16 +15,18 @@ Installation:
 
 Usage:
 ------
-In your view you can use the helper method jcarousel_slideshow(images=[],options={}).  This creates the html necessary for a slideshow element.  It accepts the following parameters:
-* Array of images.  These are the slideshow items.
-* Hash of options.  The only recognized option so far is :auto_scroll.  When set to true the slideshow will scroll automatically.
+In your view you can use the helper method jcarousel_slideshow(options={}).  This creates the html necessary for a slideshow element.  It accepts the following parameters:
+* Hash of options.  The supported options as of now are:
+	:auto_scroll=> true or time in seconds to automatically scroll by
+	:images=> Array of images.  Will create html like this <li><img src="image_name" />
+	:content=> Array of content.  If you want to pass in more than just image paths, use this option.  It takes precedence over the images option.
 
 Example:
 -------
 
 	# View
 	<% photos = ["image_1.jpg","image_2.jpg"] %>
-	<%= jcarousel_slideshow photos %>
+	<%= jcarousel_slideshow :images=>photos %>
 	
 	# Creates html
 	<div id="jcarousel-slides" class="jcarousel-skin-tango">
@@ -36,13 +38,37 @@ Example:
 	
 	# View
 	<% photos = ["image_1.jpg","image_2.jpg"] %>
-	<%= jcarousel_slideshow photos,:auto_scroll=>true %>
+	<%= jcarousel_slideshow :images=>photos,:auto_scroll=>true %>
 	
 	#Creates html
 	<div id="jcarousel-slides" class="jcarousel-skin-tango">
-		<ul class="jcarousel-slides-auto">
+		<ul class="jcarousel-slides auto-scroll">
 			<li><img src="/images/image_1.jpg"/></li>
 			<li><img src="/images/image_2.jpg"/></li>
+		</ul>
+	</div>
+	
+	# View
+	<% photos = ["image_1.jpg","image_2.jpg"] %>
+	<%= jcarousel_slideshow :images=>photos,:auto_scroll=>"8" %>
+	
+	#Creates html
+	<div id="jcarousel-slides" class="jcarousel-skin-tango">
+		<ul auto="8" class="jcarousel-slides auto-scroll">
+			<li><img src="/images/image_1.jpg"/></li>
+			<li><img src="/images/image_2.jpg"/></li>
+		</ul>
+	</div>
+	
+	# View
+	<% photos = ["image_1.jpg","image_2.jpg"] %>
+	<%= jcarousel_slideshow :content=>photos,:auto_scroll=>"8" %>
+	
+	#Creates html
+	<div id="jcarousel-slides" class="jcarousel-skin-tango">
+		<ul auto="8" class="jcarousel-slides auto-scroll">
+			<li>image_1.jpg</li>
+			<li>image_2.jpg</li>
 		</ul>
 	</div>
 

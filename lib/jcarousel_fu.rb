@@ -9,18 +9,29 @@ module JcarouselFu
     content << "\n#{stylesheet_link_tag('skin.css')}"                                
   end
   
-  def jcarousel_slideshow(image_array=[],options={})
+  def jcarousel_slideshow(options={})
+    options[:images] ||= []
+    options[:content] ||= []
     ul_class = "jcarousel-slides"
+    
     auto_scroll = options[:auto_scroll]
     unless auto_scroll.nil?
       ul_class << " auto-scroll"
       unless auto_scroll == true
         auto_value = auto_scroll
       end
-     end
+    end
+    
+    content_array = []
+    unless options[:content].empty?
+      content_array = options[:content].collect {|w| content_tag(:li,w)}
+    else
+      content_array = options[:images].collect {|w| content_tag(:li,image_tag(w))}
+    end
+    
     content_tag :div, :id=>"jcarousel-slides",:class=>"jcarousel-skin-tango" do
       content_tag :ul,:class=>ul_class, :id=>"jcarousel-slides",:auto=>auto_value do
-        image_array.collect {|w| content_tag(:li,image_tag(w))}
+          content_array
       end
     end
   end
