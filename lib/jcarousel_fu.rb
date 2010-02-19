@@ -30,7 +30,7 @@ module JcarouselFu
     end
     
     content_tag :div, :id=>"jcarousel-slides",:class=>"jcarousel-skin-tango" do
-      content_tag :ul,:class=>ul_class, :id=>"jcarousel-slides",:auto=>auto_value do
+      content_tag :ul,:class=>ul_class, :id=>"jcarousel-slides",:auto=>auto_value,:animation=>options[:animation] do
           content_array
       end
     end
