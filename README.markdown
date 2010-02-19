@@ -47,4 +47,4 @@ Example:
 	</div>
 
 
-Copyright (c) 2010 [Patrick Robertson](http://p-rob.me), released under the MIT license
+Copyright (c) 2010 [Patrick Robertson](http://p-rob.me), released under the MIT license  
