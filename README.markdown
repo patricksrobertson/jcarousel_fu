@@ -18,7 +18,6 @@ Usage:
 In your view you can use the helper method jcarousel_slideshow(options={}).  This creates the html necessary for a slideshow element.  It accepts the following parameters:
 
 Hash of options.  The supported options as of now are:
-
 	:auto_scroll=> true or time in seconds to automatically scroll by
 	:images=> Array of images.  Will create html like this <li><img src="image_name" />
 	:content=> Array of content.  If you want to pass in more than just image paths, use this option.  It takes precedence over the images option.
