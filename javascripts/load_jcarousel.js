@@ -7,18 +7,19 @@ function slides_initCallback(carousel)
         carousel.startAuto();
     });
 };
+
 jQuery(document).ready(function() {
+	var auto_scroll_var = jQuery(".jcarousel-slides").hasClass("auto-scroll")
+	var auto_scroll_val = 0
+	if (auto_scroll_var == true) {
+		var auto_scroll_val = 3
+	}
 	jQuery(".jcarousel-slides").jcarousel( {
-	scroll: 1,
+	auto: auto_scroll_val,
+	scroll:1,
+	//auto: 3,
+	animation: 1000,
 	visible:1,
 	wrap: "both"
-  });
-	jQuery(".jcarousel-slides-auto").jcarousel( {
-	scroll: 1,
-	visible:1,
-	auto: 8, 
-	animation: 1000,
-	wrap: "both",
-    initCallback: slides_initCallback
   });
 });

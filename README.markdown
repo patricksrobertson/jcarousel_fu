@@ -9,7 +9,7 @@ jCarousel_fu is a rails plugin that creates helper methods for using the jQuery 
 
 Installation:
 -------------
-* Install the plugin with the command script/plugin install git:needtoupdateyouwhenImakeyoupublicagain
+* Install the plugin with the command script/plugin install git://github.com/patricksrobertson/jcarousel_fu.git
 * Run rake jcarousel_fu:install:all.  This will place the javascript files, image files, and CSS files for the default jCarousel skin into the public directories.
 * somewhere in the head of your page, put <%= include_jcarousel_fu %>
 

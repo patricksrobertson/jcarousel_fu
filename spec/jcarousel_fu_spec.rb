@@ -26,8 +26,9 @@ describe JcarouselFu, :type=> :helper do
   
   it "should auto increment when I say so" do
     html = helper.jcarousel_slideshow(["images_1.jpg","images_2.jpg"],:auto_scroll=>true)
-    html.should have_tag("div#jcarousel-slides-auto.jcarousel-skin-tango") do
-      with_tag("ul.jcarousel-slides-auto") do
+    html.should have_tag("div#jcarousel-slides.jcarousel-skin-tango") do
+      with_tag("ul.auto-scroll")
+      with_tag("ul.jcarousel-slides") do
         with_tag("li") do
           with_tag("img[src=?]","/images/images_1.jpg")
         end

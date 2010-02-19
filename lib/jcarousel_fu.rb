@@ -11,11 +11,11 @@ module JcarouselFu
   
   def jcarousel_slideshow(image_array=[],options={})
     ul_class = "jcarousel-slides"
-    if options[:auto_scroll] == true
-      ul_class << "-auto"
-    end    
-    content_tag :div, :id=>ul_class,:class=>"jcarousel-skin-tango" do
-      content_tag :ul,:class=>ul_class do
+    content_tag :div, :id=>"jcarousel-slides",:class=>"jcarousel-skin-tango" do
+      content_tag :ul,:class=>ul_class, :id=>"jcarousel-slides" do
+        if options[:auto_scroll] == true
+          ul_class << " auto-scroll"
+        end
         image_array.collect {|w| content_tag(:li,image_tag(w))}
       end
     end
