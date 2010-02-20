@@ -244,14 +244,8 @@ describe JcarouselFu, :type=> :helper do
     #html = helper.jcarousel_slideshow(:images=>["images_1.jpg","images_2.jpg"])
     html = helper.jcarousel_control(:length=>2)
     html.should have_tag("div.jcarousel-control") do
-      with_tag("ul") do
-        with_tag("li") do
-          with_tag("a[carousel_link = ?]", "1")
-        end
-        with_tag("li") do
-          with_tag("a[carousel_link = ?]", "2")
-        end        
-      end
+      with_tag("a[carousel_link = ?]", "1")
+      with_tag("a[carousel_link = ?]", "2")
     end
     
     

@@ -151,7 +151,7 @@
 
 .jcarousel-control {
     margin-bottom: 10px;
-    text-align: center;
+    text-align: left;
 }
  
 .jcarousel-control a {
@@ -165,8 +165,11 @@
     font-weight: bold;
 }
  
-.jcarousel-control a:focus,
-.jcarousel-control a:active {
+.jcarousel-control a:hover {
     outline: none;
 	color: blue;
+}
+.jcarousel-control a.active  {
+	outline: none;
+	color: red;
 }

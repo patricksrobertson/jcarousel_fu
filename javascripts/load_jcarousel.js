@@ -16,6 +16,15 @@ function slides_initCallback(carousel)
 
 
 jQuery(document).ready(function() {
+	
+	function highlight(carousel, obejctli,liindex,listate){
+		jQuery('.jcarousel-control a:nth-child('+ liindex +')').addClass('active');
+	};
+	
+	function removeHighlight(carousel, obejctli,liindex,listate){
+		jQuery('.jcarousel-control a:nth-child('+ liindex +')').removeClass('active');
+	};
+	
 	var auto_scroll_val = 0
 	var auto_scroll_animation = 1000
 	var scroll_by = 1
@@ -40,7 +49,7 @@ jQuery(document).ready(function() {
 	if (jQuery(".jcarousel-slides").attr("disable_next") !== undefined) {
 		next_button = null
 	}
-	jQuery(".jcarousel-slides").jcarousel( {
+	jQuery("#jcarousel-slides").jcarousel( {
 	auto: auto_scroll_val,
 	scroll: scroll_by,
 	animation: auto_scroll_animation,
@@ -48,17 +57,8 @@ jQuery(document).ready(function() {
 	wrap: "both",
 	buttonPrevHTML: prev_button,
 	buttonNextHTML: next_button,
-	initCallback: slides_initCallback
-  });
-
-	jQuery(".jcarousel-slides-external").jcarousel( {
-	auto: auto_scroll_val,
-	scroll: scroll_by,
-	animation: auto_scroll_animation,
-	visible: slides_visible,
-	wrap: "both",
-	buttonPrevHTML: prev_button,
-	buttonNextHTML: next_button,
+	itemVisibleInCallback: highlight,
+	itemVisibleOutCallback: removeHighlight,	
 	initCallback: slides_initCallback
   });
 });

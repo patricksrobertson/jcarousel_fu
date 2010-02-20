@@ -55,12 +55,10 @@ module JcarouselFu
       internal_array << counter
       counter+=1
     end
-    internal_array = internal_array.collect {|w| content_tag(:li,content_tag(:a,w,:href=>"#",:carousel_link=>w))}
+    internal_array = internal_array.collect {|w| content_tag(:a,w,:href=>"#",:carousel_link=>w)}
     
     content_tag :div, :class=>"jcarousel-control" do
-      content_tag :ul do
           internal_array
-      end
     end
   end
   
