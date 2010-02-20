@@ -34,7 +34,8 @@ module JcarouselFu
                   :id=>"jcarousel-slides",
                   :auto=>auto_value,
                   :animation=>options[:animation],
-                  :scroll=>options[:scroll] do
+                  :scroll=>options[:scroll],
+                  :visible=>options[:visible] do
           content_array
       end
     end

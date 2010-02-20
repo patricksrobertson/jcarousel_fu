@@ -13,6 +13,7 @@ jQuery(document).ready(function() {
 	var auto_scroll_val = 0
 	var auto_scroll_animation = 1000
 	var scroll_by = 1
+	var slides_visible = 1
 	if (jQuery(".jcarousel-slides").attr("scroll") !== undefined) {
 		scroll_by = parseInt(jQuery(".jcarousel-slides").attr("scroll"))
 	}
@@ -22,12 +23,15 @@ jQuery(document).ready(function() {
 	if (jQuery(".jcarousel-slides").attr("auto") !== undefined) {
 		auto_scroll_val = parseInt(jQuery(".jcarousel-slides").attr("auto"))
 	}
+	if (jQuery(".jcarousel-slides").attr("visible") !== undefined) {
+		slides_visible = parseInt(jQuery(".jcarousel-slides").attr("visible"))
+	}
 
 	jQuery(".jcarousel-slides").jcarousel( {
 	auto: auto_scroll_val,
 	scroll: scroll_by,
 	animation: auto_scroll_animation,
-	visible:1,
+	visible: slides_visible,
 	wrap: "both"
   });
 });
