@@ -13,6 +13,7 @@ module JcarouselFu
     options[:images] ||= []
     options[:content] ||= []
     options[:jcarousel_name] ||= "jcarousel-slides"
+    options[:css_style] ||= "jcarousel-skin-tango"
     div_id = options[:jcarousel_name].clone
     ul_class = options[:jcarousel_name]
     
@@ -31,7 +32,7 @@ module JcarouselFu
       content_array = options[:images].collect {|w| content_tag(:li,image_tag(w))}
     end
     
-    content_tag :div, :id=>div_id,:class=>"jcarousel-skin-tango" do
+    content_tag :div, :id=>div_id,:class=>options[:css_style] do
       content_tag :ul,:class=>ul_class,
                   :id=>div_id,
                   :auto=>auto_value,
