@@ -38,7 +38,9 @@ module JcarouselFu
                   :auto=>auto_value,
                   :animation=>options[:animation],
                   :scroll=>options[:scroll],
-                  :visible=>options[:visible] do
+                  :visible=>options[:visible],
+                  :disable_prev=>options[:disable_prev],
+                  :disable_next=>options[:disable_next] do
           content_array
       end
     end

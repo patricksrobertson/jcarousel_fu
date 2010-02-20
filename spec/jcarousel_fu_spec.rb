@@ -171,7 +171,7 @@ describe JcarouselFu, :type=> :helper do
     end   
   end
   
-  it "should show multiple images at a time if I ask it to" do
+  it "should allow me to use a different css skin if I so desire" do
     html = helper.jcarousel_slideshow(:css_style=>"jcarousel-skin-mambo",
                                       :auto_scroll=>false,
                                       :images=>["images_1.jpg","images_2.jpg"])
@@ -186,4 +186,58 @@ describe JcarouselFu, :type=> :helper do
       end
     end   
   end  
+  
+  it "should let me disable the previous button" do
+    html = helper.jcarousel_slideshow(:disable_prev=>true,
+                                      :auto_scroll=>false,
+                                      :images=>["images_1.jpg","images_2.jpg"])
+    html.should have_tag("div#jcarousel-slides.jcarousel-skin-tango") do
+      with_tag("ul[disable_prev=?]","true")
+      with_tag("ul.jcarousel-slides") do
+        with_tag("li") do
+          with_tag("img[src=?]","/images/images_1.jpg")
+        end
+        with_tag("li") do
+          with_tag("img[src=?]","/images/images_2.jpg")
+        end
+      end
+    end   
+  end
+  
+  it "should let me disable the next button" do
+    html = helper.jcarousel_slideshow(:disable_next=>true,
+                                      :auto_scroll=>false,
+                                      :images=>["images_1.jpg","images_2.jpg"])
+    html.should have_tag("div#jcarousel-slides.jcarousel-skin-tango") do
+      with_tag("ul[disable_next=?]","true")
+      with_tag("ul.jcarousel-slides") do
+        with_tag("li") do
+          with_tag("img[src=?]","/images/images_1.jpg")
+        end
+        with_tag("li") do
+          with_tag("img[src=?]","/images/images_2.jpg")
+        end
+      end
+    end   
+  end
+
+  it "should let me disable both buttons" do
+    html = helper.jcarousel_slideshow(:disable_next=>true,
+                                      :disable_prev=>true,
+                                      :auto_scroll=>false,
+                                      :images=>["images_1.jpg","images_2.jpg"])
+    html.should have_tag("div#jcarousel-slides.jcarousel-skin-tango") do
+      with_tag("ul[disable_next=?]","true")
+      with_tag("ul[disable_prev=?]","true")
+      with_tag("ul.jcarousel-slides") do
+        with_tag("li") do
+          with_tag("img[src=?]","/images/images_1.jpg")
+        end
+        with_tag("li") do
+          with_tag("img[src=?]","/images/images_2.jpg")
+        end
+      end
+    end   
+  end
+  
 end

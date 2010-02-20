@@ -14,6 +14,8 @@ jQuery(document).ready(function() {
 	var auto_scroll_animation = 1000
 	var scroll_by = 1
 	var slides_visible = 1
+	var prev_button = "<div></div>"
+	var next_button = "<div></div>"
 	if (jQuery(".jcarousel-slides").attr("scroll") !== undefined) {
 		scroll_by = parseInt(jQuery(".jcarousel-slides").attr("scroll"))
 	}
@@ -26,12 +28,19 @@ jQuery(document).ready(function() {
 	if (jQuery(".jcarousel-slides").attr("visible") !== undefined) {
 		slides_visible = parseInt(jQuery(".jcarousel-slides").attr("visible"))
 	}
-
+	if (jQuery(".jcarousel-slides").attr("disable_prev") !== undefined) {
+		prev_button = null
+	}
+	if (jQuery(".jcarousel-slides").attr("disable_next") !== undefined) {
+		next_button = null
+	}
 	jQuery(".jcarousel-slides").jcarousel( {
 	auto: auto_scroll_val,
 	scroll: scroll_by,
 	animation: auto_scroll_animation,
 	visible: slides_visible,
-	wrap: "both"
+	wrap: "both",
+	buttonPrevHTML: prev_button,
+	buttonNextHTML: next_button
   });
 });
