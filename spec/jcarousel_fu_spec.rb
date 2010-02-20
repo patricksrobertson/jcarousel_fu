@@ -153,4 +153,22 @@ describe JcarouselFu, :type=> :helper do
     end   
   end
   
+  it "should allow me to use a different set of div/ul names if I want to make my own javascript" do
+    html = helper.jcarousel_slideshow(:visible=>"3",
+                                      :auto_scroll=>false,
+                                      :images=>["images_1.jpg","images_2.jpg"],
+                                      :jcarousel_name=>"bob-jcarousel")
+    html.should have_tag("div#bob-jcarousel.jcarousel-skin-tango") do
+      with_tag("ul[visible=?]","3")
+      with_tag("ul.bob-jcarousel") do
+        with_tag("li") do
+          with_tag("img[src=?]","/images/images_1.jpg")
+        end
+        with_tag("li") do
+          with_tag("img[src=?]","/images/images_2.jpg")
+        end
+      end
+    end   
+  end
+  
 end

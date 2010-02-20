@@ -12,7 +12,9 @@ module JcarouselFu
   def jcarousel_slideshow(options={})
     options[:images] ||= []
     options[:content] ||= []
-    ul_class = "jcarousel-slides"
+    options[:jcarousel_name] ||= "jcarousel-slides"
+    div_id = options[:jcarousel_name].clone
+    ul_class = options[:jcarousel_name]
     
     auto_scroll = options[:auto_scroll]
     unless auto_scroll.nil? || (false == auto_scroll)
@@ -29,9 +31,9 @@ module JcarouselFu
       content_array = options[:images].collect {|w| content_tag(:li,image_tag(w))}
     end
     
-    content_tag :div, :id=>"jcarousel-slides",:class=>"jcarousel-skin-tango" do
+    content_tag :div, :id=>div_id,:class=>"jcarousel-skin-tango" do
       content_tag :ul,:class=>ul_class,
-                  :id=>"jcarousel-slides",
+                  :id=>div_id,
                   :auto=>auto_value,
                   :animation=>options[:animation],
                   :scroll=>options[:scroll],

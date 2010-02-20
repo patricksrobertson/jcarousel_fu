@@ -33,6 +33,8 @@ Hash of options.  The supported options as of now are:
 	:content=> Array of content.  If you want to pass in more than just image paths, use this option.  It takes precedence over the images option.
 	:animation=> Integer.  Time in milliseconds transition between slides.  If this is longer than the auto_scroll time it starts to behave funny.  Defaults to 1000ms when left out.
 	:scroll=> Integer.  # of slides to scroll by at a time.  Default is 1.
+	:visible=> Integer.  # of slides visible at a time.  Make sure your CSS skin container is wide enough to handle the number of slides you choose to be visible.
+	:jcarousel_name=> String.  Changes the name of the div/UL elements that jCarousel is looking for.  You'll have to add your own function in application.js to cover this.  I built this in if you want to have two different types of jCarousels on one page.  
 
 Examples:
 -------
@@ -105,11 +107,8 @@ This usage scrolls the image every 8 seconds, and doesn't wrap the collection in
 
 To Do's
 -------
-
-* accept custom jCarousel name (for using more than 1 per page)
 * accept custom jCarousel skin
 * external controls
 * enable toggling of prev/next buttons
-* change the # of visible images
 
 Copyright (c) 2010 [Patrick Robertson](http://p-rob.me), released under the MIT license  
