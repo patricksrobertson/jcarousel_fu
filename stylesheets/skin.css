@@ -148,3 +148,25 @@
     cursor: default;
     background-position: 0 -96px;
 }
+
+.jcarousel-control {
+    margin-bottom: 10px;
+    text-align: center;
+}
+ 
+.jcarousel-control a {
+    font-size: 75%;
+    text-decoration: none;
+    padding: 0 5px;
+    margin: 0 0 5px 0;
+    border: 1px solid #fff;
+    color: #eee;
+    background-color: #4088b8;
+    font-weight: bold;
+}
+ 
+.jcarousel-control a:focus,
+.jcarousel-control a:active {
+    outline: none;
+	color: blue;
+}

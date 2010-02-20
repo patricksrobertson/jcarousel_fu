@@ -13,6 +13,7 @@ module JcarouselFu
     options[:images] ||= []
     options[:content] ||= []
     options[:jcarousel_name] ||= "jcarousel-slides"
+
     options[:css_style] ||= "jcarousel-skin-tango"
     div_id = options[:jcarousel_name].clone
     ul_class = options[:jcarousel_name]
@@ -42,6 +43,23 @@ module JcarouselFu
                   :disable_prev=>options[:disable_prev],
                   :disable_next=>options[:disable_next] do
           content_array
+      end
+    end
+  end
+  
+  def jcarousel_control(options={})
+    options[:length] ||= 0
+    counter = 1
+    internal_array = []
+    while counter <= Integer(options[:length]) do
+      internal_array << counter
+      counter+=1
+    end
+    internal_array = internal_array.collect {|w| content_tag(:li,content_tag(:a,w,:href=>"#",:carousel_link=>w))}
+    
+    content_tag :div, :class=>"jcarousel-control" do
+      content_tag :ul do
+          internal_array
       end
     end
   end

@@ -240,4 +240,22 @@ describe JcarouselFu, :type=> :helper do
     end   
   end
   
+  it "should have a base external controller when it's there." do
+    #html = helper.jcarousel_slideshow(:images=>["images_1.jpg","images_2.jpg"])
+    html = helper.jcarousel_control(:length=>2)
+    html.should have_tag("div.jcarousel-control") do
+      with_tag("ul") do
+        with_tag("li") do
+          with_tag("a[carousel_link = ?]", "1")
+        end
+        with_tag("li") do
+          with_tag("a[carousel_link = ?]", "2")
+        end        
+      end
+    end
+    
+    
+      
+  end
+  
 end

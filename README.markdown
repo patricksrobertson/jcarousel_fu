@@ -38,6 +38,10 @@ Hash of options.  The supported options as of now are:
 	:css_style=> String.  Changes the skin used for the helper.  Defaults to jcarousel-skin-tango, which is the style defined in the skin.css added to your stylesheets folder. 
 	:disable_prev=> True.  When enabled with true, disables the previous button.
 	:disable_next=> True.  When enabled with true, disables the next button. 
+	
+To add external controls to your slideshow, use the helper method jcarousel_control(options={}).  This creates the html necessary for an external controller.  It accepts the following parameters:
+	
+	:length=> The number of items being slideshowed through.  Should just be the content/images array.size.  
 
 Examples:
 -------
@@ -110,7 +114,7 @@ This usage scrolls the image every 8 seconds, and doesn't wrap the collection in
 
 To Do's
 -------
-* external controls
+* external controls with more custimization
 * add the features I never use but other people might.
 
 Copyright (c) 2010 [Patrick Robertson](http://p-rob.me), released under the MIT license  

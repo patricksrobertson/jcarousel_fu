@@ -1,5 +1,11 @@
 function slides_initCallback(carousel)
 {
+	//function for external control
+	jQuery('.jcarousel-control a').bind('click', function() {
+		carousel.scroll(jQuery.jcarousel.intval(jQuery(this).attr("carousel_link")));
+		return false;
+	});
+	
     // Pause autoscrolling if the user moves with the cursor over the clip.
     carousel.clip.hover(function() {
         carousel.stopAuto();
@@ -41,6 +47,18 @@ jQuery(document).ready(function() {
 	visible: slides_visible,
 	wrap: "both",
 	buttonPrevHTML: prev_button,
-	buttonNextHTML: next_button
+	buttonNextHTML: next_button,
+	initCallback: slides_initCallback
+  });
+
+	jQuery(".jcarousel-slides-external").jcarousel( {
+	auto: auto_scroll_val,
+	scroll: scroll_by,
+	animation: auto_scroll_animation,
+	visible: slides_visible,
+	wrap: "both",
+	buttonPrevHTML: prev_button,
+	buttonNextHTML: next_button,
+	initCallback: slides_initCallback
   });
 });
