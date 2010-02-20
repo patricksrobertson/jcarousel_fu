@@ -15,7 +15,7 @@ module JcarouselFu
     ul_class = "jcarousel-slides"
     
     auto_scroll = options[:auto_scroll]
-    unless auto_scroll.nil?
+    unless auto_scroll.nil? || (false == auto_scroll)
       ul_class << " auto-scroll"
       unless auto_scroll == true
         auto_value = auto_scroll
@@ -30,7 +30,11 @@ module JcarouselFu
     end
     
     content_tag :div, :id=>"jcarousel-slides",:class=>"jcarousel-skin-tango" do
-      content_tag :ul,:class=>ul_class, :id=>"jcarousel-slides",:auto=>auto_value,:animation=>options[:animation] do
+      content_tag :ul,:class=>ul_class,
+                  :id=>"jcarousel-slides",
+                  :auto=>auto_value,
+                  :animation=>options[:animation],
+                  :scroll=>options[:scroll] do
           content_array
       end
     end

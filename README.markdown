@@ -32,6 +32,7 @@ Hash of options.  The supported options as of now are:
 	:images=> Array of images.  Will create html like this <li><img src="image_name" /></li>
 	:content=> Array of content.  If you want to pass in more than just image paths, use this option.  It takes precedence over the images option.
 	:animation=> Integer.  Time in milliseconds transition between slides.  If this is longer than the auto_scroll time it starts to behave funny.  Defaults to 1000ms when left out.
+	:scroll=> Integer.  # of slides to scroll by at a time.  Default is 1.
 
 Examples:
 -------
@@ -110,6 +111,5 @@ To Do's
 * external controls
 * enable toggling of prev/next buttons
 * change the # of visible images
-* change the # of elements that the slideshow scrolls by
 
 Copyright (c) 2010 [Patrick Robertson](http://p-rob.me), released under the MIT license  
