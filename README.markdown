@@ -1,6 +1,6 @@
 jCarousel_fu
 --------------
-**Homepage**: [http://github.com/patricksrobertson](http://github.com/patricksrobertson/jcarousel_fu)
+**Homepage**: [http://github.com/patricksrobertson/jcarousel_fu](http://github.com/patricksrobertson/jcarousel_fu)
 **Author**: [Patrick Robertson](mailto:patricksrobertson@gmail.com)
 **Copyright**: 2010
 **License**: [MIT License](file:LICENSE)
@@ -40,8 +40,11 @@ Hash of options.  The supported options as of now are:
 	:disable_next=> True.  When enabled with true, disables the next button. 
 	
 To add external controls to your slideshow, use the helper method jcarousel_control(options={}).  This creates the html necessary for an external controller.  It accepts the following parameters:
-	
-	:length=> The number of items being slideshowed through.  Should just be the content/images array.size.  
+
+Hash of options.  The supported options as of now are:	
+	:length=> The number of items being slideshowed through.  Should just be the content/images array.size.
+	:images=> Array of images.  This will create <a href="#" carousel_link="number"><img src="image.jpg"/></a> for each item.  The # of images you provide overrides anything placed in length.
+	:content=> Array of content to link.  This is just meant if you want to name the links.  You could also get fancy and pass a blank space and use background images in the CSS to create buttons for external navigation this way.  Content overrides both images and length.
 
 Examples:
 -------
@@ -111,10 +114,46 @@ This usage scrolls the image every 8 seconds, and doesn't wrap the collection in
 			<li>image_2.jpg</li>
 		</ul>
 	</div>
+	
+This is a basic external controller.
+	# View
+	<%= jcarousel_control :length=>"3" %>
+	
+	#Creates html
+	<div class="jcarousel-control">
+		<a carousel_link="1" href="#">1</a>
+		<a carousel_link="2" href="#">2</a>		
+		<a carousel_link="3" href="#">3</a>
+	</div>
+
+This is an external control using thumbnails.
+	#View
+	<% for photo in @photos %>
+	<% thumb_array = photo.public_filename(:thumb) %>
+	<% photo_array = photo.public_filename %>
+	<% end %>
+	<%= jcarousel_control :images=> thumb_array %>
+	
+	#Creates html
+	<div class="jcarousel-control">
+		<a carousel_link="index" href="#"><img src="thumb.jpg" /></a>
+		...
+	</div>
+
+This is an external control using content.
+	#View
+	<% external_content = ["jim","bob","sue"] %>
+	<%= jcarousel_control :content=>external_content %>
+	
+	#Creates html
+	<div class="jcarousel-control">
+		<a carousel_link="1" href="#">jim</a>
+		<a carousel_link="2" href="#">bob</a>		
+		<a carousel_link="3" href="#">sue</a>		
+	</div>
 
 To Do's
 -------
-* external controls with more custimization
 * add the features I never use but other people might.
 
 Copyright (c) 2010 [Patrick Robertson](http://p-rob.me), released under the MIT license  

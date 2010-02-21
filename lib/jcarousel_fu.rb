@@ -49,13 +49,36 @@ module JcarouselFu
   
   def jcarousel_control(options={})
     options[:length] ||= 0
+    options[:content] ||= []
+    options[:images] ||= []
+    unless options[:images].empty?
+      options[:length] = options[:images].size
+    else
+      unless options[:content].empty?
+        options[:length] = options[:content].size
+      end
+    end
     counter = 1
     internal_array = []
-    while counter <= Integer(options[:length]) do
-      internal_array << counter
-      counter+=1
+    if options[:content].empty?
+      if options[:images].empty?
+        while counter <= Integer(options[:length]) do
+          internal_array << counter
+          counter+=1
+        end
+        internal_array = internal_array.collect {|w| content_tag(:a,w,:href=>"#",:carousel_link=>w)}  
+      else
+          internal_array = options[:images].collect {|w| image_tag(w)}
+          internal_array = internal_array.collect {|w| content_tag(:a,w,:href=>"#",:carousel_link=>(internal_array.index(w) + 1))}
+          
+      end
+    else
+      options[:content].each do |content|
+        internal_array << content
+      end
+      internal_array = internal_array.collect {|w| content_tag(:a,w,:href=>"#",:carousel_link=>(internal_array.index(w) + 1))}
     end
-    internal_array = internal_array.collect {|w| content_tag(:a,w,:href=>"#",:carousel_link=>w)}
+    
     
     content_tag :div, :class=>"jcarousel-control" do
           internal_array

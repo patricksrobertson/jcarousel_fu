@@ -247,9 +247,60 @@ describe JcarouselFu, :type=> :helper do
       with_tag("a[carousel_link = ?]", "1")
       with_tag("a[carousel_link = ?]", "2")
     end
+  end
     
-    
+    it "should have a blank external controller when no parameters are passed." do
+      #html = helper.jcarousel_slideshow(:images=>["images_1.jpg","images_2.jpg"])
+      html = helper.jcarousel_control()
+      html.should have_tag("div.jcarousel-control") do
+      end    
       
+  end
+  it "should accept content instead of a length" do
+    #html = helper.jcarousel_slideshow(:images=>["images_1.jpg","images_2.jpg"])
+    html = helper.jcarousel_control(:content=>["portraits","landscape"])
+    html.should have_tag("div.jcarousel-control") do
+      with_tag("a", "portraits")
+      with_tag("a", "landscape")
+    end
+  end
+  
+  it "should accept images instead of length" do
+    #html = helper.jcarousel_slideshow(:images=>["images_1.jpg","images_2.jpg"])
+    html = helper.jcarousel_control(:images=>["images_1.jpg","images_2.jpg"])
+    html.should have_tag("div.jcarousel-control") do
+      with_tag("a[carousel_link = ?]", "1") do
+        with_tag("img[src= ?]", "/images/images_1.jpg")
+      end
+      with_tag("a[carousel_link = ?]", "2") do
+        with_tag("img[src = ?]","/images/images_2.jpg")
+      end
+    end
+  end
+  
+  it "should override length with the size of the image array" do
+    #html = helper.jcarousel_slideshow(:images=>["images_1.jpg","images_2.jpg"])
+    html = helper.jcarousel_control(:length=>"1",
+                                    :images=>["images_1.jpg","images_2.jpg"])
+    html.should have_tag("div.jcarousel-control") do
+      with_tag("a[carousel_link = ?]", "1") do
+        with_tag("img[src= ?]", "/images/images_1.jpg")
+      end
+      with_tag("a[carousel_link = ?]", "2") do
+        with_tag("img[src = ?]","/images/images_2.jpg")
+      end
+    end
+  end
+  
+  it "should override images and length with content" do
+    #html = helper.jcarousel_slideshow(:images=>["images_1.jpg","images_2.jpg"])
+    html = helper.jcarousel_control(:length=>"1",
+                                    :images=>["images_1.jpg","images_2.jpg"],   
+                                    :content=>["portraits","landscape"])
+    html.should have_tag("div.jcarousel-control") do
+      with_tag("a", "portraits")
+      with_tag("a", "landscape")
+    end
   end
   
 end
