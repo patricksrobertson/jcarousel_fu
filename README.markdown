@@ -129,8 +129,8 @@ This is a basic external controller.
 This is an external control using thumbnails.
 	#View
 	<% for photo in @photos %>
-	<% thumb_array = photo.public_filename(:thumb) %>
-	<% photo_array = photo.public_filename %>
+	<% thumb_array << photo.public_filename(:thumb) %>
+	<% photo_array << photo.public_filename %>
 	<% end %>
 	<%= jcarousel_control :images=> thumb_array %>
 	
