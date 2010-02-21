@@ -28,8 +28,6 @@
 .jcarousel-skin-tango .jcarousel-item {
     width: 800px;
     height: 335px;
-	position:relative;
-	z-index:-1;
 }
 
 .jcarousel-skin-tango .jcarousel-item-horizontal {

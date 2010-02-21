@@ -4,9 +4,9 @@ module JcarouselFu
   # just put <%= include_jcarousel_fu %> in the head of your page
   def include_jcarousel_fu(*args)
     content = javascript_include_tag('jquery.j_carousel/jquery.jcarousel.pack.js',
-                                     'jquery.j_carousel/load_jcarousel')
-    content << "\n#{stylesheet_link_tag('jquery.jcarousel.css')}"
-    content << "\n#{stylesheet_link_tag('skin.css')}"                                
+                                     'jquery.j_carousel/load_jcarousel.min.js')
+    content << "\n#{stylesheet_link_tag('jquery.jcarousel.min.css')}"
+    content << "\n#{stylesheet_link_tag('skin.min.css')}"                                
   end
   
   def jcarousel_slideshow(options={})
